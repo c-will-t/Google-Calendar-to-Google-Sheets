@@ -22,7 +22,7 @@ The script then grabs those events daily and places them in a different tab of t
 
 ## Installation
 
-1. **Make a copy of the sheets template**
+1. **Make a copy of the sheets template** _(optional, but recommended)_
 
    - Open the Google Sheets template for this use case here: https://docs.google.com/spreadsheets/d/1hLrZcHHQSXcYhPd2gWwzulbilf-Q6cvNl7hykCm2GvU/edit
    - Then click _file > Make a copy_
@@ -45,12 +45,17 @@ The script then grabs those events daily and places them in a different tab of t
 
 - **Spreadsheet ID:** Your Spreadsheet ID is the value after "/d/" in the URL of your spreadsheet. Example: docs.google.com/spreadsheets/d/**your_spreadsheet_id**/edit
 - **Sheet Name:** This is the name of the tab in your spreadhseet where you would like the events to be stored. In the template, the name is "Hours"
-- **Calendar ID:** This is the ID of the Google calendar you want to log. You can find it by going to your Google Calendar and looking under _My calendars_ on the left side. Hover over the calendar you want to use and click the three dots ![image](https://github.com/user-attachments/assets/6965351e-fdcd-4740-801e-d63eb74c90cc) Then click _Settings and sharing_. From there, scroll down to the _Integrate calendar_ section and you should see your calendar ID. Copy the entire string.
+- **Calendar ID:** This is the ID of the Google calendar you want to log. You can find it by going to your Google Calendar and looking under _My calendars_ on the left side. Hover over the calendar you want to use and click the three dots
+
+ ![image](https://github.com/user-attachments/assets/6965351e-fdcd-4740-801e-d63eb74c90cc) 
+ 
+ Then click _Settings and sharing_. From there, scroll down to the _Integrate calendar_ section and you should see your calendar ID. Copy the entire string.
+ 
  ![image](https://github.com/user-attachments/assets/328580da-6066-4493-b4c2-dca9d20245ab)
 
 4. **Test**
    - Save and name your project in Google Apps script.
-   - Creating a calendar events using the naming convention above and run the script. You will likely need to go through a few permissions screens on the first run.
+   - Creating a calendar event using the naming convention above and run the script. You will likely need to go through a few permissions screens on the first run.
   
 5. **Create a trigger (optional)**
 - You can trigger the script to run periodically from Apps Script by going to _Triggers > Add Trigger_. Remember, the script only looks back 7 days, so I recommend setting the trigger to run within a 7 day window (I set mine to daily), or modify the lookback window of the script.
