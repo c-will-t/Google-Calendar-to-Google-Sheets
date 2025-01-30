@@ -18,25 +18,20 @@ function logEventsFromCalendar() {
     //Get events in Date range
     var events = cal.getEvents(last7D, yesterday);
     //Get Hours tab of spreadsheet
-    var hours = SpreadsheetApp.openById(ssID).getSheetByName(sheetName);
-    //Get columns for formula
-    var formulaCol1 = 8
-    var formulaCol2 = 3
+    var sheet = SpreadsheetApp.openById(ssID).getSheetByName(sheetName);
   
      for (let i = 0; i < events.length; i++){
       if (events[i].getColor() != "2") {
         var startTime = events[i].getStartTime();
         var endTime = events[i].getEndTime();
-        var cat = events[i].getTitle().match(/.*-\ (.*)/)[1];
-        var id = events[i].getTitle().match(/(.*)\ -.*/)[1];
+        var eventName = events[i].getTitle()
         var description = events[i].getDescription();
         var creationDate = events[i].getDateCreated();
-        var startRow = hours.getLastRow()+1;
+        var startRow = sheet.getLastRow()+1;
         var startColumn = 1
-        var valuesToLog = [[startTime,id,,startTime,endTime,cat,description,,creationDate]]
-        hours.getRange(startRow,startColumn,1,9).setValues(valuesToLog);
-        hours.getRange(startRow, formulaCol1, 1, 1).setFormula("=E"+startRow+"-D"+startRow);
-        hours.getRange(startRow, formulaCol2, 1, 1).setFormula("=vlookup(B"+startRow+",Jobs!A:B,2,FALSE)")
+        var valuesToLog = [[startTime,eventName,startTime,endTime,description,,creationDate]]
+        sheet.getRange(startRow,startColumn,1,7).setValues(valuesToLog);
+        sheet.getRange(startRow, 6, 1, 1).setFormula("=D"+startRow+"-C"+startRow);
         events[i].setColor('2');
       }
     }
